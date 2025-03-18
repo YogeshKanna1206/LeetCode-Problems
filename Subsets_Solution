@@ -1,0 +1,20 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        int len = nums.length;
+        int n = 1<<len;
+        List<List<Integer>> list = new ArrayList<>();
+        list.add(new ArrayList<>());
+        for(int i=1;i<n;i++){
+            List<Integer> min_list = new ArrayList<>();
+            for(int j=0;j<len;j++){
+                if((i&(1<<j))!=0){
+                    min_list.add(nums[j]);
+                }
+            }
+            if(!list.contains(min_list)){
+                list.add(min_list);
+            }
+        }
+        return list;
+    }
+}
